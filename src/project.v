@@ -22,17 +22,13 @@ module tt_um_pmendozap_tyny04212026 (
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, clk, rst_n, uio_in, 1'b0};
-
-  reg [7:0] contador;
-
-  always @ (posedge clk) begin
-    if(!rst_n) contador <= 8'd0;
-    else if(ui_in[0] == 1'b0) begin
-      contador <= contador + 1;
-    end else begin
-      contador <= {1'b0, ui_in[7:1]};
-    end
-  end
+ wire[7:0] contador;
+conta(
+    .clk(clk), 
+    .rst_n(rst_n), 
+    .contador (contador), 
+    .dir (ui_in[0]), 
+    .pl(ui_in[7:1]));
 
   assign uo_out = contador;
 endmodule
