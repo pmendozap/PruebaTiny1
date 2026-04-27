@@ -18,41 +18,43 @@ project:
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "project.v"
-    - "conta.sv"
+    - "segment_disp.sv"
+    - "SPI_Slave.v"
+    - "top.sv"
 
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: "cl"
-  ui[1]: "coi0"
-  ui[2]: "coi1"
-  ui[3]: "coi2"
-  ui[4]: "coi3"
-  ui[5]: "coi4"
-  ui[6]: "coi5"
-  ui[7]: "coi6"
+  ui[0]: "data_in_0"
+  ui[1]: "data_in_1"
+  ui[2]: "data_in_2"
+  ui[3]: "data_in_3"
+  ui[4]: "data_in_4"
+  ui[5]: "data_in_5"
+  ui[6]: "data_in_6"
+  ui[7]: "data_in_7"
 
   # Outputs
-  uo[0]: "con0"
-  uo[1]: "con1"
-  uo[2]: "con2"
-  uo[3]: "con3"
-  uo[4]: "con4"
-  uo[5]: "con5"
-  uo[6]: "con6"
-  uo[7]: "con7"
+  uo[0]: "cat0"
+  uo[1]: "cat1"
+  uo[2]: "cat2"
+  uo[3]: "cat3"
+  uo[4]: "cat4"
+  uo[5]: "cat5"
+  uo[6]: "cat6"
+  uo[7]: ""
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[0]: "MISO"
+  uio[1]: "MOSI"
+  uio[2]: "CS"
+  uio[3]: "CLK"
+  uio[4]: "AN0"
+  uio[5]: "AN1"
+  uio[6]: "AN2"
+  uio[7]: "AN3"
 
 # Do not change!
 yaml_version: 6

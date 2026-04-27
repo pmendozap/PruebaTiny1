@@ -6,7 +6,7 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= SystemVerilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = conta.sv project.v 
+PROJECT_SOURCES = SPI_Slave.v segment_disp.sv top.sv project.v 
 
 ifneq ($(GATES),yes)
 
