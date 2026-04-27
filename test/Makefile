@@ -4,7 +4,7 @@
 # defaults
 SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
-TOPLEVEL_LANG ?= SystemVerilog
+TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = SPI_Slave.v segment_disp.sv top.sv project.v 
 
