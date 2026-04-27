@@ -22,9 +22,9 @@ module segment_disp(
 	 
 	 
 reg [2:0] s;	 
-reg [3:0] digit=0;
+reg [3:0] digit;
 wire [3:0] aen;
-reg [31:0] clkdiv=0;
+reg [31:0] clkdiv;
 
 //assign s = clkdiv[19-3:17-3];
 	 
@@ -38,13 +38,14 @@ assign aen = 4'b1111; // all turned off initially
 
 
 always @(posedge clk)// or posedge clr)
-	
+	if(!rst) digit <= 0;
+	else
 	case(s)
-	0:digit = x_r[3:0] ; // s is 00 -->0 ;  digit gets assigned 4 bit value assigned to x[3:0]
-	1:digit = x_r[7:4] ; // s is 01 -->1 ;  digit gets assigned 4 bit value assigned to x[7:4]
-	2:digit = x_r[11:8] ; // s is 10 -->2 ;  digit gets assigned 4 bit value assigned to x[11:8
-	3:digit = x_r[15:12]; // s is 11 -->3 ;  digit gets assigned 4 bit value assigned to x[15:12]
-	default:digit = x_r[3:0];
+	0:digit <= x_r[3:0] ; // s is 00 -->0 ;  digit gets assigned 4 bit value assigned to x[3:0]
+	1:digit <= x_r[7:4] ; // s is 01 -->1 ;  digit gets assigned 4 bit value assigned to x[7:4]
+	2:digit <= x_r[11:8] ; // s is 10 -->2 ;  digit gets assigned 4 bit value assigned to x[11:8
+	3:digit <= x_r[15:12]; // s is 11 -->3 ;  digit gets assigned 4 bit value assigned to x[15:12]
+	default:digit <= x_r[3:0];
 	
 	endcase
 	
@@ -78,12 +79,23 @@ default: a_to_g = 7'b0000000; // U
 
 endcase
 
+logic [3:0] an_p;
 
-always @(posedge clk)begin
-an=4'b1111;
+always @(*)begin
+an_p=4'b1111;
 if(aen[s] == 1)
-an[s] = 0;
+an_p[s] = 0;
 end
+
+always @(posedge clk) begin
+    if(!rst)
+		an <= 4'hf;
+	else
+		an <= an_p;
+	end
+
+
+
 
 
 //clkdiv
