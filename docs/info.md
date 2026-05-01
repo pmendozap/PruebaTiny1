@@ -9,12 +9,15 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+The system is an SPI to seven segment controller 
 
 ## How to test
 
-Explain how to use your project
+Send trough SPI the  data and see it in the interface
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+ADD an 7 segment
+Buttons
+And SPI connections
+
